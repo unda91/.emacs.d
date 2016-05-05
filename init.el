@@ -1,0 +1,116 @@
+;;;Emilio Unda
+;;;2011 mayo 26
+;;; This is an initialization file for emacs
+
+
+
+;; Use AllegroCL as a Common Lisp interpreter
+;; To use M-x fi:common-lisp
+;;  (push "/opt/acl82express/eli" load-path)
+;;  (load "fi-site-init.el")
+;;  (setq fi:common-lisp-image-name "/opt/acl82express/alisp")
+;;  (setq fi:common-lisp-image-file "/opt/acl82express/alisp.dxl")
+;;  (setq fi:common-lisp-directory "/opt/acl82express")
+
+
+;; Use indentation with spaces only
+(setq-default indent-tabs-mode nil)
+;; Highlight matching parenthesis
+(show-paren-mode t)
+;; Show use linux style with four spaces per indent
+(setq c-default-style "bsd"
+      c-basic-offset 4
+      js-indent-level 2)
+;; use c++-mode for ".h"
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+;;Setup a compiler for programs using OpenCV
+;(defun compile-opencv ()
+;  "compile a program that uses OpenCV"
+;  (interactive)
+;  (compile 
+
+
+(put 'narrow-to-region 'disabled nil)
+
+
+;; To use mail
+;(load "~/.emacs.d/gnus.el")
+
+(put 'downcase-region 'disabled nil)
+
+;;
+;; Use html-mode for html files
+(add-to-list 'auto-mode-alist '("\\.html\\'" . html-mode))
+
+
+;; Add json formatting
+; to format json nicely call
+; json-pretty-print
+(load "/home/emilio/.emacs.d/json.el")
+
+
+;; Normally you use Crtl-u Crtl-<SPC> to return to an old mark in the
+;; mark ring.  With the next line any subsequent call can be made
+;; without Crt-u using only Crtl-<SPC>
+(setq set-mark-command-repeat-pop t)
+
+
+;; To make emacs use UTF-8 encoding
+;; I think it will do it always
+(prefer-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+
+
+;;
+;; Initialization for 
+;; having the default Prolog mode
+;;
+(setq auto-mode-alist
+      (append
+       '(("\\.pl" . prolog-mode))
+       auto-mode-alist))
+(setq prolog-program-name "swipl")
+(setq prolog-consult-string "[user].\n")
+;If you want this.  Indentation is either poor or I don't use
+;it as intended.
+;(setq prolog-indent-width 8)
+
+
+;;
+;; Change the background color so it doesn't hurt my eyes
+;;
+(set-background-color "#461616")
+(set-foreground-color "white")
+
+
+;;
+;; Stuff for Erlang development
+;; Disactivate all electric commands
+(setq erlang-electric-commands nil)
+
+
+;;
+;; Desktop save mode
+;; I am trying out desktop save mode to save buffers on shutdown
+; (desktop-save-mode 1)
+
+;;
+;; Use C style indenting for css files
+;;
+(setq cssm-indent-function #'cssm-c-style-indenter)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values (quote ((encoding . utf-8)))))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+

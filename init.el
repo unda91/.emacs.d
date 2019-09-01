@@ -2,25 +2,32 @@
 ;;;2011 mayo 26
 ;;; This is an initialization file for emacs
 
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
 
-
-;; Use AllegroCL as a Common Lisp interpreter
-;; To use M-x fi:common-lisp
-;;  (push "/opt/acl82express/eli" load-path)
-;;  (load "fi-site-init.el")
-;;  (setq fi:common-lisp-image-name "/opt/acl82express/alisp")
-;;  (setq fi:common-lisp-image-file "/opt/acl82express/alisp.dxl")
-;;  (setq fi:common-lisp-directory "/opt/acl82express")
-
+(load "~/.emacs.d/bazel-customizations.el")
 
 ;; Use indentation with spaces only
 (setq-default indent-tabs-mode nil)
 ;; Highlight matching parenthesis
 (show-paren-mode t)
+;; Disable backup files.
+(setq make-backup-files nil)
+
+
 ;; Show use linux style with four spaces per indent
-(setq c-default-style "bsd"
-      c-basic-offset 4
+(setq c-default-style
+      '((java-mode . "bsd")
+	(other . "bsd")))
+
+
+(setq c-basic-offset 4
       js-indent-level 2)
+
+
 ;; use c++-mode for ".h"
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
@@ -43,11 +50,11 @@
 ;; Use html-mode for html files
 (add-to-list 'auto-mode-alist '("\\.html\\'" . html-mode))
 
-
-;; Add json formatting
-; to format json nicely call
-; json-pretty-print
-(load "/home/emilio/.emacs.d/json.el")
+;;; I lost 
+;; ;; Add json formatting
+;; ; to format json nicely call
+;; ; json-pretty-print
+;; (load "/home/emilio/.emacs.d/json.el")
 
 
 ;; Normally you use Crtl-u Crtl-<SPC> to return to an old mark in the
